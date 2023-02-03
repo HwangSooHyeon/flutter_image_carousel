@@ -11,6 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final PageController pageController = PageController();
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: PageView(
+        controller: pageController,
         children: [1, 2, 3, 4, 5, 6]
             .map(
               (number) => Image.asset(
