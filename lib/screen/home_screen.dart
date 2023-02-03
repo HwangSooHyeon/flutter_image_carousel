@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final PageController pageController = PageController();
 
   @override
@@ -23,7 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
         seconds: 3,
       ),
       (timer) {
-        print('실행!');
+        int? nextPage = pageController.page?.toInt();
+
+        if (nextPage == null) return;
+        nextPage++;
+        if (nextPage > 5) nextPage = 0;
+        print('page number: $nextPage');
+        pageController.animateToPage(
+          nextPage,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
       },
     );
   }
